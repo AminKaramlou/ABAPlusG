@@ -4,6 +4,53 @@
             "extension": [
                 {
                     "aboutRecommendation": {
+                        "id": "http://anonymous.org/data/RecCOPD-SmokingCessationDecreaseALSShould",
+                        "text": "Clinician should encourage patient to quit smoking",
+                        "causationBeliefs": [
+                            {
+                                "id": "http://anonymous.org/data/CBSmokingCessationDecreaseALS",
+                                "contribution": "positive",
+                                "transition": {
+                                    "id": "http://anonymous.org/data/TrDecreaseALS",
+                                    "effect": "Decrease",
+                                    "property": {
+                                        "display": "airflow limitation severity",
+                                        "code": "airflow.limitation.severity"
+                                    },
+                                    "situationTypes": [
+                                        {
+                                            "id": "http://anonymous.org/data/SitALSHigh",
+                                            "type": "hasTransformableSituation",
+                                            "value": {
+                                                "representation": "High",
+                                                "display": "Having a high airflow limitation severity when inhaling and exhaling"
+                                            }
+                                        },
+                                        {
+                                            "id": "http://anonymous.org/data/SitALSLow",
+                                            "type": "hasExpectedSituation",
+                                            "value": {
+                                                "representation": "Low",
+                                                "display": "Having a low airflow limitation severity when inhaling and exhaling"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "reasons": "positive contribution _ON_ airflow limitation severity _TO_ Decrease _FROM_ Having a high airflow limitation severity when inhaling and exhaling to Having a low airflow limitation severity when inhaling and exhaling"
+                    },
+                    "interactionsInformation": {
+                        "interactingRecommendations": [],
+                        "text": "No applicable alternatives considered. No contradicting recommendations considered. No repetitive recommendations considered. No recommendations in repairable relation considered.",
+                        "alternatives": [],
+                        "contradictions": [],
+                        "repetitions": [],
+                        "repairables": []
+                    }
+                },
+                {
+                    "aboutRecommendation": {
                         "id": "http://anonymous.org/data/RecCOPD-LamaDecreaseCOPDStage2Should",
                         "text": "Clinician should recommend administering LAMA",
                         "causationBeliefs": [
@@ -58,6 +105,7 @@
                                 "preferred": false
                             }
                         ],
+                        "text": "Considered alternatives: recommend administration of LABA; recommend administration of LABA + LAMA. No contradicting recommendations considered. Considered repetitive recommendations: recommend administration of LABA; recommend administration of LABA + LAMA. No recommendations in repairable relation considered.",
                         "alternatives": [
                             "http://anonymous.org/data/RecCOPD-LabaDecreaseCOPDStage2Should",
                             "http://anonymous.org/data/RecCOPD-LabaLamaDecreaseCOPDStage2Should"
@@ -67,52 +115,6 @@
                             "http://anonymous.org/data/RecCOPD-LabaDecreaseCOPDStage2Should",
                             "http://anonymous.org/data/RecCOPD-LabaLamaDecreaseCOPDStage2Should"
                         ],
-                        "repairables": []
-                    }
-                },
-                {
-                    "aboutRecommendation": {
-                        "id": "http://anonymous.org/data/RecCOPD-SmokingCessationDecreaseALSShould",
-                        "text": "Clinician should encourage patient to quit smoking",
-                        "causationBeliefs": [
-                            {
-                                "id": "http://anonymous.org/data/CBSmokingCessationDecreaseALS",
-                                "contribution": "positive",
-                                "transition": {
-                                    "id": "http://anonymous.org/data/TrDecreaseALS",
-                                    "effect": "Decrease",
-                                    "property": {
-                                        "display": "airflow limitation severity",
-                                        "code": "airflow.limitation.severity"
-                                    },
-                                    "situationTypes": [
-                                        {
-                                            "id": "http://anonymous.org/data/SitALSHigh",
-                                            "type": "hasTransformableSituation",
-                                            "value": {
-                                                "representation": "High",
-                                                "display": "Having a high airflow limitation severity when inhaling and exhaling"
-                                            }
-                                        },
-                                        {
-                                            "id": "http://anonymous.org/data/SitALSLow",
-                                            "type": "hasExpectedSituation",
-                                            "value": {
-                                                "representation": "Low",
-                                                "display": "Having a low airflow limitation severity when inhaling and exhaling"
-                                            }
-                                        }
-                                    ]
-                                }
-                            }
-                        ],
-                        "reasons": "positive contribution _ON_ airflow limitation severity _TO_ Decrease _FROM_ Having a high airflow limitation severity when inhaling and exhaling to Having a low airflow limitation severity when inhaling and exhaling"
-                    },
-                    "interactionsInformation": {
-                        "interactingRecommendations": [],
-                        "alternatives": [],
-                        "contradictions": [],
-                        "repetitions": [],
                         "repairables": []
                     }
                 }
@@ -176,6 +178,7 @@
                                 "preferred": false
                             }
                         ],
+                        "text": "Considered alternatives: recommend administration of LAMA; recommend administration of LABA + LAMA. No contradicting recommendations considered. Considered repetitive recommendations: recommend administration of LAMA; recommend administration of LABA + LAMA. No recommendations in repairable relation considered.",
                         "alternatives": [
                             "http://anonymous.org/data/RecCOPD-LamaDecreaseCOPDStage2Should",
                             "http://anonymous.org/data/RecCOPD-LabaLamaDecreaseCOPDStage2Should"
@@ -228,6 +231,7 @@
                     },
                     "interactionsInformation": {
                         "interactingRecommendations": [],
+                        "text": "No applicable alternatives considered. No contradicting recommendations considered. No repetitive recommendations considered. No recommendations in repairable relation considered.",
                         "alternatives": [],
                         "contradictions": [],
                         "repetitions": [],
