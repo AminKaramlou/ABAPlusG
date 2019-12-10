@@ -103,42 +103,42 @@ def get_explanations_json(framework, extensions, dss):
                     
                     interacting_recommendations_list.append(interacting_rec_information)
 
-                # if alternatives:
-                #     alt_texts = []
-                #     for alt in alternatives:
-                #         alt_text = f"{alt['suggestion']} {alt['aboutExecutionOf']}"
-                #         alt_texts.append(alt_text)
-                #     text_alternatives = f"Considered alternatives: {'; '.join(str(alt_text) for alt_text in alt_texts)}"
-                # else:
-                #     text_alternatives = "No applicable alternatives considered"
-                # if contradictions:
-                #     contr_texts = []
-                #     for contr in contradictions:
-                #         contr_text = f"{contr['suggestion']} {contr['aboutExecutionOf']}"
-                #         contr_texts.append(contr_text)
-                #     text_contradictions = f"Considered contradictory recommendations: {'; '.join(str(contr_text) for contr_text in contr_texts)}"
-                # else:
-                #     text_contradictions = "No contradicting recommendations considered"
-                # if repetitions:
-                #     repet_texts = []
-                #     for repet in repetitions:
-                #         repet_text = f"{repet['suggestion']} {repet['aboutExecutionOf']}"
-                #         repet_texts.append(repet_text)
-                #     text_repetitions = f"Considered repetitive recommendations: {'; '.join(str(repet_text) for repet_text in repet_texts)}"
-                # else:
-                #     text_repetitions = "No repetitive recommendations considered"
-                # if repairables:
-                #     repair_texts = []
-                #     for repair in repairables:
-                #         repair_text = f"{repair['suggestion']} {repair['aboutExecutionOf']}"
-                #         repair_texts.append(repair_text)
-                #     text_repairables = f"Considered recommendations in repairable relation: {'; '.join(str(repair_text) for repair_text in repair_texts)}"
-                # else:
-                #     text_repairables = "No recommendations in repairable relation considered"
+                if alternatives:
+                    alt_texts = []
+                    for alt in alternatives:
+                        alt_text = f"{alt['suggestion']} {alt['aboutExecutionOf']}"
+                        alt_texts.append(alt_text)
+                    text_alternatives = f"Considered alternatives: {'; '.join(str(alt_text) for alt_text in alt_texts)}"
+                else:
+                    text_alternatives = "No applicable alternatives considered"
+                if contradictions:
+                    contr_texts = []
+                    for contr in contradictions:
+                        contr_text = f"{contr['suggestion']} {contr['aboutExecutionOf']}"
+                        contr_texts.append(contr_text)
+                    text_contradictions = f"Considered contradictory recommendations: {'; '.join(str(contr_text) for contr_text in contr_texts)}"
+                else:
+                    text_contradictions = "No contradicting recommendations considered"
+                if repetitions:
+                    repet_texts = []
+                    for repet in repetitions:
+                        repet_text = f"{repet['suggestion']} {repet['aboutExecutionOf']}"
+                        repet_texts.append(repet_text)
+                    text_repetitions = f"Considered repetitive recommendations: {'; '.join(str(repet_text) for repet_text in repet_texts)}"
+                else:
+                    text_repetitions = "No repetitive recommendations considered"
+                if repairables:
+                    repair_texts = []
+                    for repair in repairables:
+                        repair_text = f"{repair['suggestion']} {repair['aboutExecutionOf']}"
+                        repair_texts.append(repair_text)
+                    text_repairables = f"Considered recommendations in repairable relation: {'; '.join(str(repair_text) for repair_text in repair_texts)}"
+                else:
+                    text_repairables = "No recommendations in repairable relation considered"
 
                 interactions_information_dict = {
                     'interactingRecommendations': interacting_recommendations_list,
-                    # 'text': f"{text_alternatives}. {text_contradictions}. {text_repetitions}. {text_repairables}."
+                    'text': f"{text_alternatives}. {text_contradictions}. {text_repetitions}. {text_repairables}.", 
                     'alternatives': [rec['id'] for rec in alternatives], 
                     'contradictions': [rec['id'] for rec in contradictions], 
                     'repetitions': [rec['id'] for rec in repetitions], 
