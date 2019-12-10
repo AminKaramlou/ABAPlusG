@@ -12,6 +12,7 @@ def get_explanations_json(framework, extensions, dss):
                 rec = next (r for r in recommendations if r['id'] == sentence)
                 rec_id = rec['id']
                 causation_beliefs = []
+                reasons_components = []
                 reasons = []
                 for belief in rec['causationBeliefs']:
                     transition = belief['transition']
@@ -20,14 +21,22 @@ def get_explanations_json(framework, extensions, dss):
                     causation_belief = {
                         'id': belief['id'],
                         'contribution': belief['contribution'], 
-                        'transition': belief['transition']                     
+                        'transition': transition                     
                         # 'property': transition['property']['code'],
                         # 'effect': transition['id'], 
                         # 'currentSituation': pre_situation['id'],
                         # 'expectedSituation': post_situation['id']
                     }
-                    reason = f"{belief['contribution']} contribution _ON_ {transition['property']['display']} _TO_ {transition['effect']} _FROM_ {pre_situation['value']['display']} to {post_situation['value']['display']}"
+                    reason_components = {
+                    	'contribution': belief['contribution'], 
+                    	'contributionON': transition['property']['display'],
+                    	'contributionTO': transition['effect'], 
+                    	'from': pre_situation['value']['display'], 
+                    	'to': post_situation['value']['display']
+                    }
+                    reason = f"{belief['contribution']} contribution _ON_ {transition['property']['display']} _TO_ {transition['effect']} _FROM_ {pre_situation['value']['display']} _TO_ {post_situation['value']['display']}"
                     causation_beliefs.append(causation_belief)
+                    reasons_components.append(reason_components)
                     reasons.append(reason)
                 rec_information = {
                     'id': rec_id,
@@ -35,6 +44,7 @@ def get_explanations_json(framework, extensions, dss):
                     # 'suggestion': rec['suggestion'],
                     'text': rec['text'], 
                     'causationBeliefs': causation_beliefs, 
+                    'reasonsComponents': reasons_components,
                     'reasons': f"{'; '.join(str(reason) for reason in reasons)}"
                 }
 
