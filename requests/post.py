@@ -5,8 +5,8 @@ import os.path
 import requests
 from requests.exceptions import HTTPError
 
-# URL = "https://aba-plus-g.herokuapp.com/generate_explanations"
-URL = "http://127.0.0.1:5000/generate_explanations"
+URL = "https://aba-plus-g.herokuapp.com/generate_explanations"
+# URL = "http://127.0.0.1:5000/generate_explanations"
 INPUT_FILE = "DSS2Arg_useCase(PrefSelected).json"
 
 with open(INPUT_FILE, "rb") as DSS_input_file:
