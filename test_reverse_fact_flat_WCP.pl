@@ -14,3 +14,6 @@ myRule(C(a), [c, d]).
 myRule(C(d), [d]).
 myRule(C(e), []).
 myPrefLT(c, a).
+
+% Unique grounded and preferred extension {a, b}, has consequence C(e)
+% No (set-)stable extension
