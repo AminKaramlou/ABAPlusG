@@ -29,6 +29,13 @@ from src.extensions import get_extensions, dump_extensions
 def compute_extensions(file):
     abapf = generate_aba_plus_g_framework_from_file(file)
     extensions = get_extensions(abapf)
+    click.echo("--- Framework")
+    click.echo("----- Language")
+    click.echo(abapf.language)
+    click.echo("----- Assumptions")
+    click.echo(abapf.assumptions)
+    click.echo("----- Rules")
+    click.echo(abapf.rules)
     click.echo("--------------------------Extensions-----------------------")
     click.echo(extensions)
     click.echo("--------------------------Extensions-----------------------")
