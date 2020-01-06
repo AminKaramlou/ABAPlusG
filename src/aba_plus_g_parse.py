@@ -52,7 +52,7 @@ def generate_aba_plus_g_framework(input_string):
         string = re.sub(re.compile("\%.*?\n"), "",
                         string)  # remove all occurrence of single line comments (%COMMENT\n ) from string
         string = "\n".join([line.strip() for line in string.split("\n") if line.strip() != ""])  # remove trailing spaces
-        
+
         return string.replace('\r', '')
 
     input = format_input_string(input_string)
@@ -74,7 +74,10 @@ def generate_aba_plus_g_framework(input_string):
 
     for rule in rules:
         language.add(rule.consequent)
-        language.add(rule.antecedent)
+        language.add(rule.antecedent)  # this will result into a non-sensical language
+        # for s in rule.antecedent:
+        #     language.add(s)
+
     return ABAPlusG(language, rules, assumption_symbols, assumption_to_contrary_mapping, strict_preferences, non_strict_preferences)
 
 
@@ -130,8 +133,6 @@ def generate_language_and_mapping(contr_decls, assumption_symbols):
 def generate_rules(rule_decls):
     """
     :param rule_decls: A list of rule declarations
-    :param language: A set of Sentences
-    :param assumptions: A set of Assumptions
     :return: A set of Rules
     """
     rules = set()
@@ -141,7 +142,7 @@ def generate_rules(rule_decls):
         match = re.match(RULE_REGEX, cleaned_decl)
         if match:
             consequent = match.group(1)
-            antecedent = match.group(2)
+            antecedent = match.group(2)  # this makes the antecedent a string, rather than a tuple/list/set, so rules effectively cannot have multiple sentences in their bodies (antecedents)
             rules.add(Rule(antecedent, consequent))
 
     return rules
