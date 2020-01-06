@@ -12,7 +12,7 @@ ASSUMP_PREDICATE = "myAsm"
 # contrary(a, b). means "b" is the contrary of "a"
 CONTR_PREDICATE = "contrary"
 
-# myRule(a, [b,c]). means {b,c} |- a
+# myRule(a, [b,c]). means "a if (b and c)"
 RULE_PREDICATE = "myRule"
 
 STRICT_PREFERENCES_PREDICATE= "myPrefLT"
@@ -51,6 +51,8 @@ def generate_aba_plus_g_framework(input_string):
                         string)  # remove all occurrence of streamed comments (/*COMMENT */) from string
         string = re.sub(re.compile("\%.*?\n"), "",
                         string)  # remove all occurrence of single line comments (%COMMENT\n ) from string
+        string = "\n".join([line.strip() for line in string.split("\n") if line.strip() != ""])  # remove trailing spaces
+        
         return string.replace('\r', '')
 
     input = format_input_string(input_string)
