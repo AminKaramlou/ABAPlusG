@@ -5,9 +5,9 @@ import json
 def add_closure_to_label_in(labelling, closure, framework):
     for a in closure:
         labelling[a] = Label.IN
-        for attacked in framework.assumptions_directly_attacked_by(a):
-            for a in framework.get_inverse_closure(attacked):
-                labelling[a] = Label.OUT
+        for attacked in framework.assumptions_directly_attacked_by(a):  # this can pick a set (of size at greater than 1) of assumptions attacked by a
+            for b in framework.get_inverse_closure(attacked):  # whence attacked does not have an inverse closure
+                labelling[b] = Label.OUT
 
 
 def _is_terminal_labelling(labelling):
@@ -354,6 +354,16 @@ def construct_grounded_labelling(framework):
                     changed = True
                     add_assumption_to_label_in(a, labelling)
     return labelling
+
+
+def construct_grounded_extension(framework):
+    '''
+    :param framework: An ABAPlusG framework.
+    :return: A grounded extension of framework.
+    '''
+    grounded_labelling = construct_grounded_labelling(framework)
+    extension = frozenset({a for a, label in grounded_labelling.items() if label == Label.IN})
+    return extension
 
 
 class Label(Enum):
