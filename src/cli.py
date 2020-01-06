@@ -4,6 +4,7 @@ from src.aba_plus_g_parse import generate_aba_plus_g_framework_from_file
 from src.explanations import get_explanations_json
 from src.tmr_to_aba_plus_g import transform_dss_input_to_aba_plus_file
 from src.labelling_algorithms import construct_grounded_labelling
+from src.extensions import get_extensions, dump_extensions
 
 @click.command()
 @click.option('--file',
