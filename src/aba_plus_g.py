@@ -41,11 +41,13 @@ class ABAPlusG:
 
             for s in language:
                 direct_attacks[s] = contrary_to_assumptions_mapping[s] if s in contrary_to_assumptions_mapping else set()
+                # if s is a contrary of some assumption, then s directly attacks all the assumptions whose contrary it is
                 direct_supports[s] = set()
                 direct_supported_by[s] = set()
                 if s in assumptions:
                     contrary = assumption_to_contrary_mapping[s]
                     direct_attacked_by[s] = {contrary} if contrary in assumptions else set()
+                    # if s is an assumption, then it is directly attacked by its contrary if the latter is an assumption too
                 else:
                     direct_attacked_by[s] = set()
                     substitutions[s] = set()
@@ -54,30 +56,38 @@ class ABAPlusG:
                 if r.consequent in contrary_to_assumptions_mapping:
                     for a in contrary_to_assumptions_mapping[r.consequent]:
                         direct_attacked_by[a].add(r.antecedent)
-                        direct_attacks[r.antecedent].add(a)
+                        direct_attacks[r.antecedent].add(a)  # if r.antecedent were properly defined as a collection of sentences (for rules with more than one element in the body), then it would not generally be a sentence itself, and hence r.antecedent would not work as a key in direct_attacks
                 if r.consequent in self.assumptions:
                     direct_supported_by[r.consequent].add(r.antecedent)
-                    direct_supports[r.antecedent].add(r.consequent)
+                    direct_supports[r.antecedent].add(r.consequent)  # the same issue with r.antecedent not necessarily in the language
                 else:
                     substitutions[r.consequent].add(r.antecedent)
 
             while substitutions:
-                non_assumption, targets = substitutions.popitem()
-                for s in direct_supports[non_assumption]:
+                head, body = substitutions.popitem()
+                # pick a rule's head (that is not an assumption) and its body
+                for s in direct_supports[head]:
+                # for a sentence s that the rule's head directly supports
                     if s not in self.assumptions:
                         if s in substitutions:
-                            substitutions[s] = substitutions[s].union(direct_supported_by[non_assumption])
-                for s in targets:
-                    direct_supported_by[s] = direct_supported_by[s].union(direct_supported_by[non_assumption])
-                    direct_attacked_by[s] = direct_attacked_by[s].union(direct_attacked_by[non_assumption])
-                    direct_supports[s] = direct_supports[s].union(direct_supports[non_assumption])
-                    direct_attacks[s] = direct_attacks[s].union(direct_attacks[non_assumption])
+                        # if s is not an assumption and is a head of some rule
+                            substitutions[s] = substitutions[s].union(direct_supported_by[head])
+                            # add all the direct supporters of head to the substitutions of s
+                for b in body:
+                # for every sentence b in the body
+                    direct_supported_by[b] = direct_supported_by[b].union(direct_supported_by[head])
+                    # add the direct supporters of non-assumption to the direct supporters of b, and similarly for the dicrect attackers, attackees and supportees
+                    direct_attacked_by[b] = direct_attacked_by[b].union(direct_attacked_by[head])
+                    direct_supports[b] = direct_supports[b].union(direct_supports[head])
+                    direct_attacks[b] = direct_attacks[b].union(direct_attacks[head])
 
+            # the following filter direct attacks and supports to stem from singleton sets of assumptions only
             direct_attacks = {key: {a for a in value if a in assumptions} for (key, value) in direct_attacks.items() if key in assumptions}
             direct_supports = {key: {a for a in value if a in assumptions} for (key, value) in direct_supports.items() if key in assumptions}
             direct_attacked_by = {key: {a for a in value if a in assumptions} for (key, value) in direct_attacked_by.items() if key in assumptions}
             direct_supported_by = {key: {a for a in value if a in assumptions} for (key, value) in direct_supported_by.items() if key in assumptions}
 
+            # this wont work when a contains more than one assumption
             for a in direct_attacks:
                 for target in direct_attacks[a].copy():
                     if (a, target) in strict_preferences:
@@ -91,6 +101,7 @@ class ABAPlusG:
         def _create_closure_and_inverse_closure(direct_supports, direct_supported_by):
             '''
             :return: The closure of the singleton assumption set i.e. Cl(assumption).
+            BUT WE MOST LIKELY NEED CLOSURE OF A SET OF ASSUMPTIONS IN GENERAL...
             '''
             closure_mapping = {}
             inv_closure_mapping = {}
@@ -141,22 +152,22 @@ class ABAPlusG:
         return str(self.__dict__)
 
     def get_closure(self, assumption):
-        return self.closure_mapping[assumption]
+        return self.closure_mapping[assumption]  # but in ABA generally we need closure of general sets of assumptions, not only singletons
 
     def get_inverse_closure(self, assumption):
-        return self.inverse_closure_mapping[assumption]
+        return self.inverse_closure_mapping[assumption]  # likewise for the "inverse closure"
 
     def assumptions_directly_attacked_by(self, sentence):
         '''
         :param sentence: A string in self.language
         :return: A set of strings which are assumptions directly attacked by  sentence.
         '''
-        return self.direct_attacks[sentence]
+        return self.direct_attacks[sentence]  # this should be sets of assumptions, in general, due to reverse attacks
 
     def assumptions_which_directly_attack(self, assumption_set):
         '''
         :param assumption_set: A set of assumptions
-        :return: A set of strings in self. which are antecedent's of a rule with sentence as it's consequent.
+        :return: A set of strings in self. which are antecedents of a rule with sentence as its consequent.
         '''
         result = set()
         for a in assumption_set:
@@ -220,6 +231,7 @@ class Rule:
     def __init__(self, antecedent, consequent):
         """
         :param antecedent: a string (note that in BABA the body only has one element)
+        EXACTLY: in ABA the bodies of rules generally have more than one element
         :param consequent: a string
         """
         self.antecedent = antecedent
@@ -236,5 +248,6 @@ class Rule:
         return '{} implies {}'.format(str(self.antecedent), str(self.consequent))
 
     def __hash__(self):
+        # I don't understand what turning the antecedent into a list and then a tuple is supposed to achieve
         return (tuple(list(self.antecedent)),
                 self.consequent).__hash__()
