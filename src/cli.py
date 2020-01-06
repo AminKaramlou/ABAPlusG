@@ -36,6 +36,12 @@ def compute_extensions(file):
     click.echo(abapf.assumptions)
     click.echo("----- Rules")
     click.echo(abapf.rules)
+    # for rule in abapf.rules:
+    #     click.echo("------- rule")
+    #     click.echo(rule)
+    #     click.echo("---------- body elements")
+    #     for b in rule.antecedent:
+    #         click.echo(b)
     click.echo("--------------------------Extensions-----------------------")
     click.echo(extensions)
     click.echo("--------------------------Extensions-----------------------")

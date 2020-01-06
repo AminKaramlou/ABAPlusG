@@ -1,0 +1,18 @@
+{
+    "Preferred": [
+        [
+            "asm1",
+            "asm2"
+        ]
+    ],
+    "Set-stable": [
+        [
+            "asm1",
+            "asm2"
+        ]
+    ],
+    "Grounded": [
+        "asm1",
+        "asm2"
+    ]
+}
