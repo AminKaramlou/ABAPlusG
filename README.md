@@ -18,6 +18,9 @@ First install the relevant dependecies by running the command `make freeze && pi
 - `pip3 install -r requirements.txt`
 - `pip3 install .`
 
+Some troubleshooting:
+- `pip3 install --upgrade werkzeug` in case of complaints about `werkzeug`
+
 ## Use
 
 A live version of the ABA+ app supporting ABA+G for reasoning with clinical guidelines is available as an API on `http://aba-plus-g.herokuapp.com/`. Currently the following endpoints are accessible:
