@@ -2,7 +2,7 @@
 
 ABA+G tool for processing TMR recommendations and interactions, yielding preferred extensions. 
 
-# Windows Install and Use
+# Windows
 
 ## Install
   
@@ -16,7 +16,7 @@ ABA+G tool for processing TMR recommendations and interactions, yielding preferr
 	`coverage report`  
 	`coverage xml -i -o build/coverage.xml`  
 	
-### Updating dependencies  
+## Updating dependencies  
   
 Dependencies are managed from the `setup.py` file and then frozen in `requirements.txt` (including transitive dependencies) using `pip-compile --output-file requirements.txt setup.py`. 
 If you want to change dependencies, you will have to do it in `setup.py` and then regenerate them using `pip-compile --output-file requirements.txt setup.py`.  
@@ -37,9 +37,19 @@ install_requires = [
   
 If you execute `pip-compile --output-file requirements.txt setup.py`, it will regenerate the `requirements.txt` file with the new dependencies according to what the new version of `pytest` needs.  
 
+
+# Mac
+
+## Install
+
+- `python3 -m piptools compile --output-file requirements.txt setup.py`
+- `pip3 install -r requirements.txt`
+- `pip3 install .`
+
+
 ***
 
-## Use
+# Use
 
 ### Deployed
 

@@ -8,9 +8,35 @@
   
 This project provides an interface which implements reasoning using the ABA+G formalism. There are algorithms for calculating extensions of these frameworks under various semantics, a problem which is of interest in fields such as AI, Law and Medicine. 
 
-## CLI Usage
+## Install
 
 First install the relevant dependecies by running the command `make freeze && pip install -r requirements.txt`. Then install the CLI tool by running `pip install .` 
+
+### Mac / Windows
+
+- `python3 -m piptools compile --output-file requirements.txt setup.py`
+- `pip3 install -r requirements.txt`
+- `pip3 install .`
+
+## Use
+
+A live version of the ABA+ app supporting ABA+G for reasoning with clinical guidelines is available as an API on `http://aba-plus-g.herokuapp.com/`. Currently the following endpoints are accessible:
+ 
+ -   **/genereate_explanations** is an endpoint which accepts a post request containing a valid DSS JSON object and returns the relevant extensions and accompanying explanations for which actions need to be taken in the treatment of patients. 
+
+### Deployed
+
+To send POST requests to the [deployed ABA+G endpoint](https://aba-plus-g.herokuapp.com/generate_explanations), from `/requests` run `python post.py` (modify `URL` as required). 
+`INPUT_FILE` .json needs to be in `/requests`, the output .json will be appended with `_arg` and placed in `/requests`.
+
+### Stand-alone
+
+Run `python src/app.py` from the main directory of the repository to run the flask server with ABA+G. 
+
+To send POST requests to the [local ABA+G endpoint](http://127.0.0.1:5000/generate_explanations), from `/requests` run `python post.py` (modify `URL` as required). 
+`INPUT_FILE` .json needs to be in `/requests`, the output .json will be appended with `_arg` and placed in `/requests`.
+
+***
 
 Users can specify the components of an ABA+G framework (i.e. Assumptions, Rules, Contraries, Preferences) in a file as follows: (Note that goals are as of now still unimplemented) 
 -   **myAsm(a).**  specifies that  **a**  is an assumption;
@@ -19,11 +45,7 @@ Users can specify the components of an ABA+G framework (i.e. Assumptions, Rules,
 -   **myPrefLT(b**, **a).** specifies that assumption **a** is strictly preferred over assumption **b**;
 -   **myPrefLE(b**, **a).** specifies that assumption **a** is strictly or equally preferred over assumption **b**;
 
-## Using the deployed version
-
-A live version of the ABA+ app supporting ABA+G for reasoning with clinical guidelines is available as an API on `http://aba-plus-g.herokuapp.com/`. Currently the following endpoints are accessible:
- 
- -   **/genereate_explanations** is an endpoint which accepts a post request containing a valid DSS JSON object and returns the relevant extensions and accompanying explanations for which actions need to be taken in the treatment of patients. 
+***
 
 ## Useful reading
 
