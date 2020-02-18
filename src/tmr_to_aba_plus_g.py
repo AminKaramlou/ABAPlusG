@@ -20,20 +20,21 @@ def framework_as_string(framework):
 def transform_dss_input_to_aba_plus_file(data):
 
     tmr_data = data['TMR']
+    ehr_data = data['EHR']
     dss_data = data['DSS']
 
     guideline_group = tmr_data['guidelineGroup']
     interactions = guideline_group['interactions']
     recommendations = guideline_group['recommendations']
 
-    framework = map_tmr_to_aba_plus_framework(recommendations, interactions, dss_data)
+    framework = map_tmr_to_aba_plus_framework(recommendations, interactions, dss_data, ehr_data)
     return print_aba_plus_framework_to_file(guideline_group['id'], framework)
 
 
-def map_tmr_to_aba_plus_framework(recommendations, interactions, dss_data):
+def map_tmr_to_aba_plus_framework(recommendations, interactions, dss_data, ehr_data):
     assumptions = create_assumptions(recommendations, interactions)
     rules = create_rules(recommendations, interactions)
-    strict_preferences = create_guideline_preferences(recommendations, dss_data)
+    strict_preferences = create_guideline_preferences(recommendations, dss_data, ehr_data)
 
     framework = {
         'assumptions': assumptions,
@@ -94,12 +95,24 @@ def create_rules(recommendations, interactions):
     return rules
 
 
-def create_guideline_preferences(recommendations, dss_data):
+def create_guideline_preferences(recommendations, dss_data, ehr_data):
     strict_preferences = []
 
-    for preference in dss_data['proposedTreatment']['resource']['other']['drugTypes']['drugTypePreferences']['entries']:
+    # This will generate preferences only for the action chosen by the clinician (in EHR). 
+    # If no action is chosen, or if there are more options (in DSS) that do not concern the clinician's choices, 
+    # then the default preferences (from DSS) will be ignored.
+    for preference in ehr_data['selectedTreatment']['resource']['other']['drugTypePreferences']['entries']:
         preferred = preference['preferred']['administrationOf']
-        alternatives = [alt['administrationOf'] for alt in preference['alternative']]
+        alternatives = []
+        for potential_alternative in dss_data['proposedTreatment']['resource']['other']['drugTypes']['drugTypePreferences']['entries']:
+            alts = [alt['administrationOf'] for alt in potential_alternative['alternative']]
+            if potential_alternative['preferred'] == preferred:
+                alternatives.extend(alts)
+            elif preferred in alts:
+                alternatives.append(potential_alternative['preferred']['administrationOf'])
+                alternatives.extend(alts)
+        alternatives = [alt for alt in alternatives if not alt == preferred] # make sure to remove the preferred recommendation (as given in EHR) as a potential alternative (as given in DSS)
+
         preferred_recs = []
         alternative_recs = []
 
@@ -114,4 +127,26 @@ def create_guideline_preferences(recommendations, dss_data):
             for a in alternative_recs:
                 strict_preferences.append((a, p))
 
+
+    # for preference in dss_data['selectedTreatment']['resource']['other']['drugTypePreferences']['entries']:
+    #     preferred = preference['preferred']['administrationOf']
+    #     alternatives = [alt['administrationOf'] for alt in preference['alternative']]
+    #     preferred_recs = []
+    #     alternative_recs = []
+
+    #     for r in recommendations:
+    #         action = r['careActionTypeId']
+    #         if action == preferred:
+    #             preferred_recs.append(r['id'])
+    #         if action in alternatives:
+    #             alternative_recs.append(r['id'])
+
+    #     for p in preferred_recs:
+    #         for a in alternative_recs:
+    #             strict_preferences.append((a, p))
+
     return strict_preferences
+
+
+
+
