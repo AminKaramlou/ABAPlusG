@@ -4,11 +4,11 @@
             "extension": [
                 {
                     "aboutRecommendation": {
-                        "id": "http://anonymous.org/data/RecSHOWCASEdemo-LamaDecreaseCOPD.stage2Should",
-                        "text": "Clinician should recommend administering LAMA",
+                        "id": "http://anonymous.org/data/RecSHOWCASEdemo-LabaLamaDecreaseCOPD.stage2Should",
+                        "text": "Clinician should recommend administering LABA + LAMA",
                         "causationBeliefs": [
                             {
-                                "id": "http://anonymous.org/data/CBLamaDecreaseCOPD.stageModerate",
+                                "id": "http://anonymous.org/data/CBLabaLamaDecreaseCOPD.stageModerate",
                                 "contribution": "positive",
                                 "transition": {
                                     "id": "http://anonymous.org/data/TrDecreaseCOPD.stageModerate",
@@ -41,10 +41,10 @@
                         "reasonsComponents": [
                             {
                                 "contribution": "positive",
-                                "contributionON": "COPD stage",
+                                "contributionON": "COPD.stage",
                                 "contributionTO": "decrease",
-                                "from": "a moderate airflow limitation severity",
-                                "to": "a mild airflow limitation severity"
+                                "from": "Moderate",
+                                "to": "Mild"
                             }
                         ],
                         "reasons": "positive contribution _ON_ COPD stage _TO_ decrease _FROM_ a moderate airflow limitation severity _TO_ a mild airflow limitation severity"
@@ -56,221 +56,84 @@
                                 "interactionTypes": [
                                     "alternative",
                                     "repetition"
-                                ]
-                            },
-                            {
-                                "interactingRecommendationId": "http://anonymous.org/data/RecSHOWCASEdemo-LabaLamaDecreaseCOPD.stage2Should",
-                                "interactionTypes": [
-                                    "alternative",
-                                    "repetition"
                                 ],
                                 "preferred": false
-                            }
-                        ],
-                        "text": "Considered alternatives: recommend administration of LABA; recommend administration of LABA + LAMA. No contradicting recommendations considered. Considered repetitive recommendations: recommend administration of LABA; recommend administration of LABA + LAMA. No recommendations in repairable relation considered.",
-                        "alternatives": [
-                            "http://anonymous.org/data/RecSHOWCASEdemo-LabaDecreaseCOPD.stage2Should",
-                            "http://anonymous.org/data/RecSHOWCASEdemo-LabaLamaDecreaseCOPD.stage2Should"
-                        ],
-                        "contradictions": [],
-                        "repetitions": [
-                            "http://anonymous.org/data/RecSHOWCASEdemo-LabaDecreaseCOPD.stage2Should",
-                            "http://anonymous.org/data/RecSHOWCASEdemo-LabaLamaDecreaseCOPD.stage2Should"
-                        ],
-                        "repairables": []
-                    }
-                },
-                {
-                    "aboutRecommendation": {
-                        "id": "http://anonymous.org/data/RecSHOWCASEdemo-SmokingCessationDecreaseALSShould",
-                        "text": "Clinician should encourage patient to quit smoking",
-                        "causationBeliefs": [
-                            {
-                                "id": "http://anonymous.org/data/CBSmokingCessationDecreaseALS",
-                                "contribution": "positive",
-                                "transition": {
-                                    "id": "http://anonymous.org/data/TrDecreaseALS",
-                                    "effect": "decrease",
-                                    "property": {
-                                        "display": "airflow limitation severity",
-                                        "code": "airflow.limitation.severity"
-                                    },
-                                    "situationTypes": [
-                                        {
-                                            "id": "http://anonymous.org/data/SitALSHigh",
-                                            "type": "hasTransformableSituation",
-                                            "value": {
-                                                "representation": "high",
-                                                "display": "high airflow limitation severity"
-                                            }
-                                        },
-                                        {
-                                            "id": "http://anonymous.org/data/SitALSLow",
-                                            "type": "hasExpectedSituation",
-                                            "value": {
-                                                "representation": "low",
-                                                "display": "low airflow limitation severity"
-                                            }
-                                        }
-                                    ]
-                                }
-                            }
-                        ],
-                        "reasonsComponents": [
-                            {
-                                "contribution": "positive",
-                                "contributionON": "airflow limitation severity",
-                                "contributionTO": "decrease",
-                                "from": "high airflow limitation severity",
-                                "to": "low airflow limitation severity"
-                            }
-                        ],
-                        "reasons": "positive contribution _ON_ airflow limitation severity _TO_ decrease _FROM_ high airflow limitation severity _TO_ low airflow limitation severity"
-                    },
-                    "interactionsInformation": {
-                        "interactingRecommendations": [],
-                        "text": "No applicable alternatives considered. No contradicting recommendations considered. No repetitive recommendations considered. No recommendations in repairable relation considered.",
-                        "alternatives": [],
-                        "contradictions": [],
-                        "repetitions": [],
-                        "repairables": []
-                    }
-                }
-            ]
-        },
-        {
-            "extension": [
-                {
-                    "aboutRecommendation": {
-                        "id": "http://anonymous.org/data/RecSHOWCASEdemo-SmokingCessationDecreaseALSShould",
-                        "text": "Clinician should encourage patient to quit smoking",
-                        "causationBeliefs": [
-                            {
-                                "id": "http://anonymous.org/data/CBSmokingCessationDecreaseALS",
-                                "contribution": "positive",
-                                "transition": {
-                                    "id": "http://anonymous.org/data/TrDecreaseALS",
-                                    "effect": "decrease",
-                                    "property": {
-                                        "display": "airflow limitation severity",
-                                        "code": "airflow.limitation.severity"
-                                    },
-                                    "situationTypes": [
-                                        {
-                                            "id": "http://anonymous.org/data/SitALSHigh",
-                                            "type": "hasTransformableSituation",
-                                            "value": {
-                                                "representation": "high",
-                                                "display": "high airflow limitation severity"
-                                            }
-                                        },
-                                        {
-                                            "id": "http://anonymous.org/data/SitALSLow",
-                                            "type": "hasExpectedSituation",
-                                            "value": {
-                                                "representation": "low",
-                                                "display": "low airflow limitation severity"
-                                            }
-                                        }
-                                    ]
-                                }
-                            }
-                        ],
-                        "reasonsComponents": [
-                            {
-                                "contribution": "positive",
-                                "contributionON": "airflow limitation severity",
-                                "contributionTO": "decrease",
-                                "from": "high airflow limitation severity",
-                                "to": "low airflow limitation severity"
-                            }
-                        ],
-                        "reasons": "positive contribution _ON_ airflow limitation severity _TO_ decrease _FROM_ high airflow limitation severity _TO_ low airflow limitation severity"
-                    },
-                    "interactionsInformation": {
-                        "interactingRecommendations": [],
-                        "text": "No applicable alternatives considered. No contradicting recommendations considered. No repetitive recommendations considered. No recommendations in repairable relation considered.",
-                        "alternatives": [],
-                        "contradictions": [],
-                        "repetitions": [],
-                        "repairables": []
-                    }
-                },
-                {
-                    "aboutRecommendation": {
-                        "id": "http://anonymous.org/data/RecSHOWCASEdemo-LabaDecreaseCOPD.stage2Should",
-                        "text": "Clinician should recommend administering LABA",
-                        "causationBeliefs": [
-                            {
-                                "id": "http://anonymous.org/data/CBLabaDecreaseCOPD.stageModerate",
-                                "contribution": "positive",
-                                "transition": {
-                                    "id": "http://anonymous.org/data/TrDecreaseCOPD.stageModerate",
-                                    "effect": "decrease",
-                                    "property": {
-                                        "display": "COPD stage",
-                                        "code": "COPD.stage"
-                                    },
-                                    "situationTypes": [
-                                        {
-                                            "id": "http://anonymous.org/data/SitCOPD.stageModerate",
-                                            "type": "hasTransformableSituation",
-                                            "value": {
-                                                "representation": "Moderate",
-                                                "display": "a moderate airflow limitation severity"
-                                            }
-                                        },
-                                        {
-                                            "id": "http://anonymous.org/data/SitCOPD.stageMild",
-                                            "type": "hasExpectedSituation",
-                                            "value": {
-                                                "representation": "Mild",
-                                                "display": "a mild airflow limitation severity"
-                                            }
-                                        }
-                                    ]
-                                }
-                            }
-                        ],
-                        "reasonsComponents": [
-                            {
-                                "contribution": "positive",
-                                "contributionON": "COPD stage",
-                                "contributionTO": "decrease",
-                                "from": "a moderate airflow limitation severity",
-                                "to": "a mild airflow limitation severity"
-                            }
-                        ],
-                        "reasons": "positive contribution _ON_ COPD stage _TO_ decrease _FROM_ a moderate airflow limitation severity _TO_ a mild airflow limitation severity"
-                    },
-                    "interactionsInformation": {
-                        "interactingRecommendations": [
+                            },
                             {
                                 "interactingRecommendationId": "http://anonymous.org/data/RecSHOWCASEdemo-LamaDecreaseCOPD.stage2Should",
                                 "interactionTypes": [
                                     "alternative",
                                     "repetition"
-                                ]
-                            },
-                            {
-                                "interactingRecommendationId": "http://anonymous.org/data/RecSHOWCASEdemo-LabaLamaDecreaseCOPD.stage2Should",
-                                "interactionTypes": [
-                                    "alternative",
-                                    "repetition"
                                 ],
                                 "preferred": false
                             }
                         ],
-                        "text": "Considered alternatives: recommend administration of LAMA; recommend administration of LABA + LAMA. No contradicting recommendations considered. Considered repetitive recommendations: recommend administration of LAMA; recommend administration of LABA + LAMA. No recommendations in repairable relation considered.",
+                        "text": "Considered alternatives: recommend administration of LABA; recommend administration of LAMA. No contradicting recommendations considered. Considered repetitive recommendations: recommend administration of LABA; recommend administration of LAMA. No recommendations in repairable relation considered.",
                         "alternatives": [
-                            "http://anonymous.org/data/RecSHOWCASEdemo-LamaDecreaseCOPD.stage2Should",
-                            "http://anonymous.org/data/RecSHOWCASEdemo-LabaLamaDecreaseCOPD.stage2Should"
+                            "http://anonymous.org/data/RecSHOWCASEdemo-LabaDecreaseCOPD.stage2Should",
+                            "http://anonymous.org/data/RecSHOWCASEdemo-LamaDecreaseCOPD.stage2Should"
                         ],
                         "contradictions": [],
                         "repetitions": [
-                            "http://anonymous.org/data/RecSHOWCASEdemo-LamaDecreaseCOPD.stage2Should",
-                            "http://anonymous.org/data/RecSHOWCASEdemo-LabaLamaDecreaseCOPD.stage2Should"
+                            "http://anonymous.org/data/RecSHOWCASEdemo-LabaDecreaseCOPD.stage2Should",
+                            "http://anonymous.org/data/RecSHOWCASEdemo-LamaDecreaseCOPD.stage2Should"
                         ],
+                        "repairables": []
+                    }
+                },
+                {
+                    "aboutRecommendation": {
+                        "id": "http://anonymous.org/data/RecSHOWCASEdemo-SmokingCessationDecreaseALSShould",
+                        "text": "Clinician should encourage patient to quit smoking",
+                        "causationBeliefs": [
+                            {
+                                "id": "http://anonymous.org/data/CBSmokingCessationDecreaseALS",
+                                "contribution": "positive",
+                                "transition": {
+                                    "id": "http://anonymous.org/data/TrDecreaseALS",
+                                    "effect": "decrease",
+                                    "property": {
+                                        "display": "airflow limitation severity",
+                                        "code": "airflow.limitation.severity"
+                                    },
+                                    "situationTypes": [
+                                        {
+                                            "id": "http://anonymous.org/data/SitALSHigh",
+                                            "type": "hasTransformableSituation",
+                                            "value": {
+                                                "representation": "high",
+                                                "display": "high airflow limitation severity"
+                                            }
+                                        },
+                                        {
+                                            "id": "http://anonymous.org/data/SitALSLow",
+                                            "type": "hasExpectedSituation",
+                                            "value": {
+                                                "representation": "low",
+                                                "display": "low airflow limitation severity"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "reasonsComponents": [
+                            {
+                                "contribution": "positive",
+                                "contributionON": "airflow.limitation.severity",
+                                "contributionTO": "decrease",
+                                "from": "high",
+                                "to": "low"
+                            }
+                        ],
+                        "reasons": "positive contribution _ON_ airflow limitation severity _TO_ decrease _FROM_ high airflow limitation severity _TO_ low airflow limitation severity"
+                    },
+                    "interactionsInformation": {
+                        "interactingRecommendations": [],
+                        "text": "No applicable alternatives considered. No contradicting recommendations considered. No repetitive recommendations considered. No recommendations in repairable relation considered.",
+                        "alternatives": [],
+                        "contradictions": [],
+                        "repetitions": [],
                         "repairables": []
                     }
                 }
