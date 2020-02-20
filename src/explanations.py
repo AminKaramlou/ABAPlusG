@@ -29,10 +29,10 @@ def get_explanations_json(framework, extensions, dss):
                     }
                     reason_components = {
                     	'contribution': belief['contribution'], 
-                    	'contributionON': transition['property']['display'],
+                    	'contributionON': transition['property']['code'],
                     	'contributionTO': transition['effect'], 
-                    	'from': pre_situation['value']['display'], 
-                    	'to': post_situation['value']['display']
+                    	'from': pre_situation['value']['representation'], 
+                    	'to': post_situation['value']['representation']
                     }
                     reason = f"{belief['contribution']} contribution _ON_ {transition['property']['display']} _TO_ {transition['effect']} _FROM_ {pre_situation['value']['display']} _TO_ {post_situation['value']['display']}"
                     causation_beliefs.append(causation_belief)
