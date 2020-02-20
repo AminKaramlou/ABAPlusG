@@ -40,6 +40,10 @@ To send POST requests to the [local ABA+G endpoint](http://127.0.0.1:5000/genera
 `INPUT_FILE` .json needs to be in `/requests`, the output .json will be appended with `_arg` and placed in `/requests`.
 You also need the `requests` library for this (`pip3 install requests`).
 
+### CLI
+
+To get extensions of an ABA+ framework, `python src/cli.py --file "FILENAME"`
+
 ***
 
 Users can specify the components of an ABA+G framework (i.e. Assumptions, Rules, Contraries, Preferences) in a file as follows: (Note that goals are as of now still unimplemented) 
