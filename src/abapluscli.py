@@ -1,7 +1,6 @@
 import click
 import json
 from src.aba_plus_g_parse import generate_aba_plus_g_framework_from_file
-from src.explanations import get_explanations_json
 from src.extensions import get_extensions, dump_extensions
 
 @click.command()
