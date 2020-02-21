@@ -20,3 +20,6 @@ def generate_explanations(file):
     click.echo(explanation)
     with open(framework_file_name + '.json', 'w') as file:
         file.write(explanation)
+
+if __name__ == "__main__":
+    generate_explanations()
