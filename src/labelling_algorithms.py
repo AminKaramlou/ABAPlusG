@@ -356,6 +356,16 @@ def construct_grounded_labelling(framework):
     return labelling
 
 
+def construct_grounded_extension(framework):
+    '''
+    :param framework: An ABAPlusG framework.
+    :return: A grounded extension of framework.
+    '''
+    grounded_labelling = construct_grounded_labelling(framework)
+    extension = frozenset({a for a, label in grounded_labelling.items() if label == Label.IN})
+    return extension
+
+
 class Label(Enum):
     IN = 1
     OUT = 2
