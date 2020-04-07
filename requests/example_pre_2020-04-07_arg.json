@@ -4,6 +4,62 @@
             "extension": [
                 {
                     "aboutRecommendation": {
+                        "id": "http://anonymous.org/data/RecSHOWCASEdemo-SmokingCessationDecreaseALSShould",
+                        "text": "Clinician should encourage patient to quit smoking",
+                        "causationBeliefs": [
+                            {
+                                "id": "http://anonymous.org/data/CBSmokingCessationDecreaseALS",
+                                "contribution": "positive",
+                                "transition": {
+                                    "id": "http://anonymous.org/data/TrDecreaseALS",
+                                    "effect": "decrease",
+                                    "property": {
+                                        "display": "airflow limitation severity",
+                                        "code": "airflow.limitation.severity"
+                                    },
+                                    "situationTypes": [
+                                        {
+                                            "id": "http://anonymous.org/data/SitALSHigh",
+                                            "type": "hasTransformableSituation",
+                                            "value": {
+                                                "representation": "high",
+                                                "display": "high airflow limitation severity"
+                                            }
+                                        },
+                                        {
+                                            "id": "http://anonymous.org/data/SitALSLow",
+                                            "type": "hasExpectedSituation",
+                                            "value": {
+                                                "representation": "low",
+                                                "display": "low airflow limitation severity"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "reasonsComponents": [
+                            {
+                                "contribution": "positive",
+                                "contributionON": "airflow.limitation.severity",
+                                "contributionTO": "decrease",
+                                "from": "high",
+                                "to": "low"
+                            }
+                        ],
+                        "reasons": "positive contribution _ON_ airflow limitation severity _TO_ decrease _FROM_ high airflow limitation severity _TO_ low airflow limitation severity"
+                    },
+                    "interactionsInformation": {
+                        "interactingRecommendations": [],
+                        "text": "No applicable alternatives considered. No contradicting recommendations considered. No repetitive recommendations considered. No recommendations in repairable relation considered.",
+                        "alternatives": [],
+                        "contradictions": [],
+                        "repetitions": [],
+                        "repairables": []
+                    }
+                },
+                {
+                    "aboutRecommendation": {
                         "id": "http://anonymous.org/data/RecSHOWCASEdemo-LabaLamaDecreaseCOPD.stage2Should",
                         "text": "Clinician should recommend administering LABA + LAMA",
                         "causationBeliefs": [
@@ -78,62 +134,6 @@
                             "http://anonymous.org/data/RecSHOWCASEdemo-LabaDecreaseCOPD.stage2Should",
                             "http://anonymous.org/data/RecSHOWCASEdemo-LamaDecreaseCOPD.stage2Should"
                         ],
-                        "repairables": []
-                    }
-                },
-                {
-                    "aboutRecommendation": {
-                        "id": "http://anonymous.org/data/RecSHOWCASEdemo-SmokingCessationDecreaseALSShould",
-                        "text": "Clinician should encourage patient to quit smoking",
-                        "causationBeliefs": [
-                            {
-                                "id": "http://anonymous.org/data/CBSmokingCessationDecreaseALS",
-                                "contribution": "positive",
-                                "transition": {
-                                    "id": "http://anonymous.org/data/TrDecreaseALS",
-                                    "effect": "decrease",
-                                    "property": {
-                                        "display": "airflow limitation severity",
-                                        "code": "airflow.limitation.severity"
-                                    },
-                                    "situationTypes": [
-                                        {
-                                            "id": "http://anonymous.org/data/SitALSHigh",
-                                            "type": "hasTransformableSituation",
-                                            "value": {
-                                                "representation": "high",
-                                                "display": "high airflow limitation severity"
-                                            }
-                                        },
-                                        {
-                                            "id": "http://anonymous.org/data/SitALSLow",
-                                            "type": "hasExpectedSituation",
-                                            "value": {
-                                                "representation": "low",
-                                                "display": "low airflow limitation severity"
-                                            }
-                                        }
-                                    ]
-                                }
-                            }
-                        ],
-                        "reasonsComponents": [
-                            {
-                                "contribution": "positive",
-                                "contributionON": "airflow.limitation.severity",
-                                "contributionTO": "decrease",
-                                "from": "high",
-                                "to": "low"
-                            }
-                        ],
-                        "reasons": "positive contribution _ON_ airflow limitation severity _TO_ decrease _FROM_ high airflow limitation severity _TO_ low airflow limitation severity"
-                    },
-                    "interactionsInformation": {
-                        "interactingRecommendations": [],
-                        "text": "No applicable alternatives considered. No contradicting recommendations considered. No repetitive recommendations considered. No recommendations in repairable relation considered.",
-                        "alternatives": [],
-                        "contradictions": [],
-                        "repetitions": [],
                         "repairables": []
                     }
                 }

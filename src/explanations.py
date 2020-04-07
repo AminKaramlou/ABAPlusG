@@ -20,30 +20,30 @@ def get_explanations_json(framework, extensions, dss):
                     post_situation = next(s for s in transition['situationTypes'] if s['type'] == 'hasExpectedSituation')
                     causation_belief = {
                         'id': belief['id'],
-                        'contribution': belief['contribution'], 
-                        'transition': transition                     
+                        'contribution': belief['contribution'],
+                        'transition': transition
                         # 'property': transition['property']['code'],
-                        # 'effect': transition['id'], 
+                        # 'effect': transition['id'],
                         # 'currentSituation': pre_situation['id'],
                         # 'expectedSituation': post_situation['id']
                     }
                     reason_components = {
-                    	'contribution': belief['contribution'], 
+                        'careAction': rec['careActionType']['code'],
+                    	'contribution': belief['contribution'],
                     	'contributionON': transition['property']['code'],
-                    	'contributionTO': transition['effect'], 
-                    	'from': pre_situation['value']['representation'], 
-                    	'to': post_situation['value']['representation']
+                    	'contributionTO': transition['effect'],
+                    	'from': pre_situation['value']['code'],
+                    	'to': post_situation['value']['code']
                     }
-                    reason = f"{belief['contribution']} contribution _ON_ {transition['property']['display']} _TO_ {transition['effect']} _FROM_ {pre_situation['value']['display']} _TO_ {post_situation['value']['display']}"
+                    reason = f"{rec['careActionType']['display']} _HAS_ {belief['contribution']} contribution _ON_ {transition['property']['display']} _TO_ {transition['effect']} _FROM_ {pre_situation['value']['display']} _TO_ {post_situation['value']['display']}"
                     causation_beliefs.append(causation_belief)
                     reasons_components.append(reason_components)
                     reasons.append(reason)
                 rec_information = {
                     'id': rec_id,
-                    # 'careActionTypeId': rec['careActionTypeId'],
                     # 'suggestion': rec['suggestion'],
-                    'text': rec['text'], 
-                    'causationBeliefs': causation_beliefs, 
+                    'text': rec['text'],
+                    'causationBeliefs': causation_beliefs,
                     'reasonsComponents': reasons_components,
                     'reasons': f"{'; '.join(str(reason) for reason in reasons)}"
                 }
@@ -63,10 +63,8 @@ def get_explanations_json(framework, extensions, dss):
                 repairables = []
                 for other_rec in interacting_recommendations:
                     interaction_types = []
-                    preference = False
                     repair = False
                     # repairable_comment = None
-                    # preference_comment = None
                     for inter in guideline_group_data['interactions']:
                         if all(r_id in [r['recId'] for r in inter['interactionNorms']] for r_id in [rec_id, other_rec['id']]): # if both :rec_id: and :other_rec['id']: appear among the IDs in :inter['interactionNorms']:
                             if inter['type'] == 'repairable':
@@ -90,33 +88,33 @@ def get_explanations_json(framework, extensions, dss):
                         repairables.append(other_rec)
 
                     if (other_rec['id'], rec_id) in framework.strict_preferences:
-                        preference = True
-                        preferred = False # Interacting recommendation is not preferred over the main recommendation
+                        preferred = -1 # Interacting recommendation is not preferred over the main recommendation
                         # preference_comment = '{} is preferred'.format(rec_id)
                     elif (rec_id, other_rec['id']) in framework.strict_preferences:
-                        preference = True
-                        preferred = True # Interacting recommendation is preferred over the main recommendation
+                        preferred = 1 # Interacting recommendation is preferred over the main recommendation
                         # preference_comment = '{} not acceptable even though preferred'.format(other_rec['id'])
+                    else:
+                        preferred = 0 # The two recommendations are eqully preferred (in this case it is the same as no preference being expressed)
+                        # preference_comment = 'the two recommendations are equally preferred'
 
                     interacting_rec_information = {
                         'interactingRecommendationId': other_rec['id'],
                         'interactionTypes': interaction_types
-                        # 'interactingRecommendationActionId': other_rec['careActionTypeId'], 
+                        # 'interactingRecommendationActionId': other_rec['careActionType]['code'],
                         # 'interactingRecommendationSuggestion': other_rec['suggestion'],
                         # 'commentPreference': preference_comment,
                         # 'commentRepairable': repairable_comment
                     }
-                    if preference:
-                        interacting_rec_information.update({'preferred': preferred})
+                    interacting_rec_information.update({'preferred': preferred})
                     if repair:
                         interacting_rec_information.update({'repairable': repairable})
-                    
+
                     interacting_recommendations_list.append(interacting_rec_information)
 
                 if alternatives:
                     alt_texts = []
                     for alt in alternatives:
-                        alt_text = f"{alt['suggestion']} {alt['aboutExecutionOf']}"
+                        alt_text = f"{alt['suggestion']} {alt['careActionType']['display']}"
                         alt_texts.append(alt_text)
                     text_alternatives = f"Considered alternatives: {'; '.join(str(alt_text) for alt_text in alt_texts)}"
                 else:
@@ -124,7 +122,7 @@ def get_explanations_json(framework, extensions, dss):
                 if contradictions:
                     contr_texts = []
                     for contr in contradictions:
-                        contr_text = f"{contr['suggestion']} {contr['aboutExecutionOf']}"
+                        contr_text = f"{contr['suggestion']} {contr['careActionType']['display']}"
                         contr_texts.append(contr_text)
                     text_contradictions = f"Considered contradictory recommendations: {'; '.join(str(contr_text) for contr_text in contr_texts)}"
                 else:
@@ -132,7 +130,7 @@ def get_explanations_json(framework, extensions, dss):
                 if repetitions:
                     repet_texts = []
                     for repet in repetitions:
-                        repet_text = f"{repet['suggestion']} {repet['aboutExecutionOf']}"
+                        repet_text = f"{repet['suggestion']} {repet['careActionType']['display']}"
                         repet_texts.append(repet_text)
                     text_repetitions = f"Considered repetitive recommendations: {'; '.join(str(repet_text) for repet_text in repet_texts)}"
                 else:
@@ -140,7 +138,7 @@ def get_explanations_json(framework, extensions, dss):
                 if repairables:
                     repair_texts = []
                     for repair in repairables:
-                        repair_text = f"{repair['suggestion']} {repair['aboutExecutionOf']}"
+                        repair_text = f"{repair['suggestion']} {repair['careActionType']['display']}"
                         repair_texts.append(repair_text)
                     text_repairables = f"Considered recommendations in repairable relation: {'; '.join(str(repair_text) for repair_text in repair_texts)}"
                 else:
@@ -148,10 +146,10 @@ def get_explanations_json(framework, extensions, dss):
 
                 interactions_information_dict = {
                     'interactingRecommendations': interacting_recommendations_list,
-                    'text': f"{text_alternatives}. {text_contradictions}. {text_repetitions}. {text_repairables}.", 
-                    'alternatives': [rec['id'] for rec in alternatives], 
-                    'contradictions': [rec['id'] for rec in contradictions], 
-                    'repetitions': [rec['id'] for rec in repetitions], 
+                    'text': f"{text_alternatives}. {text_contradictions}. {text_repetitions}. {text_repairables}.",
+                    'alternatives': [rec['id'] for rec in alternatives],
+                    'contradictions': [rec['id'] for rec in contradictions],
+                    'repetitions': [rec['id'] for rec in repetitions],
                     'repairables': [rec['id'] for rec in repairables]
                 }
                 recommendation_explanation_dict = {
