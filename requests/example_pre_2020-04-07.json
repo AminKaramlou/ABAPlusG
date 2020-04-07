@@ -121,11 +121,8 @@
                     "text": "Clinician should recommend administering LABA",
                     "motivation": "Initial therapy should consist of a long acting bronchodilator; long acting are recommended over short acting inhaled bronchodilators",
                     "suggestion": "recommend",
-                    "careActionType": {
-						"id": "http://anonymous.org/data/DrugTLaba",
-						"code": "Laba",
-						"display": "administration of LABA bronchodilator"
-					},
+                    "careActionTypeId": "Laba",
+                    "aboutExecutionOf": "administration of LABA",
                     "causationBeliefs": [
                         {
                             "id": "http://anonymous.org/data/CBLabaDecreaseCOPD.stageModerate",
@@ -145,7 +142,7 @@
                                         "id": "http://anonymous.org/data/SitCOPD.stageModerate",
                                         "type": "hasTransformableSituation",
                                         "value": {
-                                            "code": "Moderate",
+                                            "representation": "Moderate",
                                             "display": "a moderate airflow limitation severity"
                                         }
                                     },
@@ -153,7 +150,7 @@
                                         "id": "http://anonymous.org/data/SitCOPD.stageMild",
                                         "type": "hasExpectedSituation",
                                         "value": {
-                                            "code": "Mild",
+                                            "representation": "Mild",
                                             "display": "a mild airflow limitation severity"
                                         }
                                     }
@@ -167,11 +164,8 @@
                     "text": "Clinician should recommend administering LAMA",
                     "motivation": "Initial therapy should consist of a long acting bronchodilator; long acting are recommended over short acting inhaled bronchodilators",
                     "suggestion": "recommend",
-                    "careActionType": {
-						"id": "http://anonymous.org/data/DrugTLabma",
-						"code": "Lama",
-						"display": "administration of LAMA bronchodilator"
-					},
+                    "careActionTypeId": "Lama",
+                    "aboutExecutionOf": "administration of LAMA",
                     "causationBeliefs": [
                         {
                             "id": "http://anonymous.org/data/CBLamaDecreaseCOPD.stageModerate",
@@ -191,7 +185,7 @@
                                         "id": "http://anonymous.org/data/SitCOPD.stageModerate",
                                         "type": "hasTransformableSituation",
                                         "value": {
-                                            "code": "Moderate",
+                                            "representation": "Moderate",
                                             "display": "a moderate airflow limitation severity"
                                         }
                                     },
@@ -199,7 +193,7 @@
                                         "id": "http://anonymous.org/data/SitCOPD.stageMild",
                                         "type": "hasExpectedSituation",
                                         "value": {
-                                            "code": "Mild",
+                                            "representation": "Mild",
                                             "display": "a mild airflow limitation severity"
                                         }
                                     }
@@ -213,11 +207,8 @@
                     "text": "Clinician should recommend administering LABA + LAMA",
                     "motivation": "A combination of bronchodilators is recommended as initial therapy for patients with  severe breathlessness. Also for patients on monotherapy with persistent breathlessness",
                     "suggestion": "recommend",
-                    "careActionType": {
-						"id": "http://anonymous.org/data/DrugTLabaLama",
-						"code": "LabaLama",
-						"display": "administration of LABA+LAMA bronchodilator"
-					},
+                    "careActionTypeId": "LabaLama",
+                    "aboutExecutionOf": "administration of LABA + LAMA",
                     "causationBeliefs": [
                         {
                             "id": "http://anonymous.org/data/CBLabaLamaDecreaseCOPD.stageModerate",
@@ -237,7 +228,7 @@
                                         "id": "http://anonymous.org/data/SitCOPD.stageModerate",
                                         "type": "hasTransformableSituation",
                                         "value": {
-                                            "code": "Moderate",
+                                            "representation": "Moderate",
                                             "display": "a moderate airflow limitation severity"
                                         }
                                     },
@@ -245,7 +236,7 @@
                                         "id": "http://anonymous.org/data/SitCOPD.stageMild",
                                         "type": "hasExpectedSituation",
                                         "value": {
-                                            "code": "Mild",
+                                            "representation": "Mild",
                                             "display": "a mild airflow limitation severity"
                                         }
                                     }
@@ -259,11 +250,8 @@
                     "text": "Clinician should encourage patient to quit smoking",
                     "motivation": "Smoking cessation has the greatest capacity to influence the natural history of COPD. If effective resources and time are dedicated to smoking cessation, long term quit success rates of up to 25% can be achieved",
                     "suggestion": "recommend",
-                    "careActionType": {
-						"id": "http://anonymous.org/data/SmokingCessation",
-						"code": "SmokingCessation",
-						"display": "recommendation of smoking cessation"
-					},
+                    "careActionTypeId": "SmokingCessation",
+                    "aboutExecutionOf": "application of smoking cessation therapies",
                     "causationBeliefs": [
                         {
                             "id": "http://anonymous.org/data/CBSmokingCessationDecreaseALS",
@@ -283,7 +271,7 @@
                                         "id": "http://anonymous.org/data/SitALSHigh",
                                         "type": "hasTransformableSituation",
                                         "value": {
-                                            "code": "high",
+                                            "representation": "high",
                                             "display": "high airflow limitation severity"
                                         }
                                     },
@@ -291,7 +279,7 @@
                                         "id": "http://anonymous.org/data/SitALSLow",
                                         "type": "hasExpectedSituation",
                                         "value": {
-                                            "code": "low",
+                                            "representation": "low",
                                             "display": "low airflow limitation severity"
                                         }
                                     }
