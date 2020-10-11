@@ -1,0 +1,248 @@
+{
+    "extensions": [
+        {
+            "extension": [
+                {
+                    "aboutRecommendation": {
+                        "id": "http://anonymous.org/data/RecCOPD-LabaDecModAlsShould",
+                        "text": "Clinician should recommend administering LABA bronchodilator",
+                        "causationBeliefs": [
+                            {
+                                "id": "http://anonymous.org/data/CBLabaDecModAls",
+                                "contribution": "positive",
+                                "transition": {
+                                    "id": "http://anonymous.org/data/TrDecModAls",
+                                    "effect": "decrease",
+                                    "property": {
+                                        "display": "airflow limitation severity",
+                                        "code": "Als"
+                                    },
+                                    "situationTypes": [
+                                        {
+                                            "id": "http://anonymous.org/data/SitModAls",
+                                            "type": "hasTransformableSituation",
+                                            "value": {
+                                                "code": "SitModAls",
+                                                "display": "a moderate airflow limitation severity"
+                                            }
+                                        },
+                                        {
+                                            "id": "http://anonymous.org/data/SitMildAls",
+                                            "type": "hasExpectedSituation",
+                                            "value": {
+                                                "code": "SitMildAls",
+                                                "display": "a mild airflow limitation severity"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "reasonsComponents": [
+                            {
+                                "contribution": "positive",
+                                "contributionON": "Als",
+                                "contributionTO": "decrease",
+                                "from": "SitModAls",
+                                "to": "SitMildAls"
+                            }
+                        ],
+                        "reasons": "positive contribution _ON_ airflow limitation severity _TO_ decrease _FROM_ a moderate airflow limitation severity _TO_ a mild airflow limitation severity"
+                    },
+                    "interactionsInformation": {
+                        "interactingRecommendations": [
+                            {
+                                "interactingRecommendationId": "http://anonymous.org/data/RecCOPD-BetaAgonistIncLowRiskCdrShouldnot",
+                                "interactionTypes": [
+                                    "contradiction"
+                                ]
+                            },
+                            {
+                                "interactingRecommendationId": "http://anonymous.org/data/RecCOPD-LamaDecModAlsShould",
+                                "interactionTypes": [
+                                    "alternative",
+                                    "repetition"
+                                ]
+                            },
+                            {
+                                "interactingRecommendationId": "http://anonymous.org/data/RecCOPD-LabaLamaDecModAlsShould",
+                                "interactionTypes": [
+                                    "alternative",
+                                    "repetition"
+                                ],
+                                "preferred": false
+                            }
+                        ],
+                        "text": "Considered alternatives: recommend administration of LAMA bronchodilator; recommend administration of LABA+LAMA bronchodilator. Considered contradictory recommendations: nonrecommend administration of Beta Agonist bronchodilator. Considered repetitive recommendations: recommend administration of LAMA bronchodilator; recommend administration of LABA+LAMA bronchodilator. No recommendations in repairable relation considered.",
+                        "alternatives": [
+                            "http://anonymous.org/data/RecCOPD-LamaDecModAlsShould",
+                            "http://anonymous.org/data/RecCOPD-LabaLamaDecModAlsShould"
+                        ],
+                        "contradictions": [
+                            "http://anonymous.org/data/RecCOPD-BetaAgonistIncLowRiskCdrShouldnot"
+                        ],
+                        "repetitions": [
+                            "http://anonymous.org/data/RecCOPD-LamaDecModAlsShould",
+                            "http://anonymous.org/data/RecCOPD-LabaLamaDecModAlsShould"
+                        ],
+                        "repairables": []
+                    }
+                }
+            ]
+        },
+        {
+            "extension": [
+                {
+                    "aboutRecommendation": {
+                        "id": "http://anonymous.org/data/RecCOPD-BetaAgonistIncLowRiskCdrShouldnot",
+                        "text": "clinician should avoid recommending administration of Beta Agonist bronchodilators to patients with cardiovascular disease",
+                        "causationBeliefs": [
+                            {
+                                "id": "http://anonymous.org/data/CBBetaAgonistIncLowRiskCdr",
+                                "contribution": "negative",
+                                "transition": {
+                                    "id": "http://anonymous.org/data/TrIncLowRiskCdr",
+                                    "effect": "increase",
+                                    "property": {
+                                        "display": "risk of having cardiac rhythm disturbances",
+                                        "code": "Crd"
+                                    },
+                                    "situationTypes": [
+                                        {
+                                            "id": "http://anonymous.org/data/SitLowRiskCrd",
+                                            "type": "hasTransformableSituation",
+                                            "value": {
+                                                "code": "SitLowRiskCrd",
+                                                "display": "a low risk of having cardiac rhythm disturbances"
+                                            }
+                                        },
+                                        {
+                                            "id": "http://anonymous.org/data/SitMildAls",
+                                            "type": "hasExpectedSituation",
+                                            "value": {
+                                                "code": "SitHighRiskCrd",
+                                                "display": "a high risk of having cardiac rhythm disturbances"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "reasonsComponents": [
+                            {
+                                "contribution": "negative",
+                                "contributionON": "Crd",
+                                "contributionTO": "increase",
+                                "from": "SitLowRiskCrd",
+                                "to": "SitHighRiskCrd"
+                            }
+                        ],
+                        "reasons": "negative contribution _ON_ risk of having cardiac rhythm disturbances _TO_ increase _FROM_ a low risk of having cardiac rhythm disturbances _TO_ a high risk of having cardiac rhythm disturbances"
+                    },
+                    "interactionsInformation": {
+                        "interactingRecommendations": [
+                            {
+                                "interactingRecommendationId": "http://anonymous.org/data/RecCOPD-LabaDecModAlsShould",
+                                "interactionTypes": [
+                                    "contradiction"
+                                ]
+                            },
+                            {
+                                "interactingRecommendationId": "http://anonymous.org/data/RecCOPD-LabaLamaDecModAlsShould",
+                                "interactionTypes": [
+                                    "contradiction"
+                                ]
+                            }
+                        ],
+                        "text": "No applicable alternatives considered. Considered contradictory recommendations: recommend administration of LABA bronchodilator; recommend administration of LABA+LAMA bronchodilator. No repetitive recommendations considered. No recommendations in repairable relation considered.",
+                        "alternatives": [],
+                        "contradictions": [
+                            "http://anonymous.org/data/RecCOPD-LabaDecModAlsShould",
+                            "http://anonymous.org/data/RecCOPD-LabaLamaDecModAlsShould"
+                        ],
+                        "repetitions": [],
+                        "repairables": []
+                    }
+                },
+                {
+                    "aboutRecommendation": {
+                        "id": "http://anonymous.org/data/RecCOPD-LamaDecModAlsShould",
+                        "text": "Clinician should recommend administering LAMA bronchodilator",
+                        "causationBeliefs": [
+                            {
+                                "id": "http://anonymous.org/data/CBLamaDecModAls",
+                                "contribution": "positive",
+                                "transition": {
+                                    "id": "http://anonymous.org/data/TrDecModAls",
+                                    "effect": "decrease",
+                                    "property": {
+                                        "display": "airflow limitation severity",
+                                        "code": "Als"
+                                    },
+                                    "situationTypes": [
+                                        {
+                                            "id": "http://anonymous.org/data/SitModAls",
+                                            "type": "hasTransformableSituation",
+                                            "value": {
+                                                "code": "SitModAls",
+                                                "display": "a moderate airflow limitation severity"
+                                            }
+                                        },
+                                        {
+                                            "id": "http://anonymous.org/data/SitMildAls",
+                                            "type": "hasExpectedSituation",
+                                            "value": {
+                                                "code": "SitMildAls",
+                                                "display": "a mild airflow limitation severity"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "reasonsComponents": [
+                            {
+                                "contribution": "positive",
+                                "contributionON": "Als",
+                                "contributionTO": "decrease",
+                                "from": "SitModAls",
+                                "to": "SitMildAls"
+                            }
+                        ],
+                        "reasons": "positive contribution _ON_ airflow limitation severity _TO_ decrease _FROM_ a moderate airflow limitation severity _TO_ a mild airflow limitation severity"
+                    },
+                    "interactionsInformation": {
+                        "interactingRecommendations": [
+                            {
+                                "interactingRecommendationId": "http://anonymous.org/data/RecCOPD-LabaDecModAlsShould",
+                                "interactionTypes": [
+                                    "alternative",
+                                    "repetition"
+                                ]
+                            },
+                            {
+                                "interactingRecommendationId": "http://anonymous.org/data/RecCOPD-LabaLamaDecModAlsShould",
+                                "interactionTypes": [
+                                    "alternative",
+                                    "repetition"
+                                ],
+                                "preferred": false
+                            }
+                        ],
+                        "text": "Considered alternatives: recommend administration of LABA bronchodilator; recommend administration of LABA+LAMA bronchodilator. No contradicting recommendations considered. Considered repetitive recommendations: recommend administration of LABA bronchodilator; recommend administration of LABA+LAMA bronchodilator. No recommendations in repairable relation considered.",
+                        "alternatives": [
+                            "http://anonymous.org/data/RecCOPD-LabaDecModAlsShould",
+                            "http://anonymous.org/data/RecCOPD-LabaLamaDecModAlsShould"
+                        ],
+                        "contradictions": [],
+                        "repetitions": [
+                            "http://anonymous.org/data/RecCOPD-LabaDecModAlsShould",
+                            "http://anonymous.org/data/RecCOPD-LabaLamaDecModAlsShould"
+                        ],
+                        "repairables": []
+                    }
+                }
+            ]
+        }
+    ]
+}

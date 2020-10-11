@@ -1,0 +1,33 @@
+myAsm(http://anonymous.org/data/RecCOPD-BetaAgonistIncLowRiskCdrShouldnot).
+myAsm(http://anonymous.org/data/RecCOPD-LabaDecModAlsShould).
+myAsm(http://anonymous.org/data/RecCOPD-LamaDecModAlsShould).
+myAsm(http://anonymous.org/data/RecCOPD-LabaLamaDecModAlsShould).
+contrary(http://anonymous.org/data/RecCOPD-BetaAgonistIncLowRiskCdrShouldnot, c_http://anonymous.org/data/RecCOPD-BetaAgonistIncLowRiskCdrShouldnot).
+contrary(http://anonymous.org/data/RecCOPD-LabaDecModAlsShould, c_http://anonymous.org/data/RecCOPD-LabaDecModAlsShould).
+contrary(http://anonymous.org/data/RecCOPD-LamaDecModAlsShould, c_http://anonymous.org/data/RecCOPD-LamaDecModAlsShould).
+contrary(http://anonymous.org/data/RecCOPD-LabaLamaDecModAlsShould, c_http://anonymous.org/data/RecCOPD-LabaLamaDecModAlsShould).
+myRule(Laba, [http://anonymous.org/data/RecCOPD-LabaDecModAlsShould]).
+myRule(decrease_Als, [Laba]).
+myRule(SitMildAls_Als, [SitModAls_Als, decrease_Als]).
+myRule(Lama, [http://anonymous.org/data/RecCOPD-LamaDecModAlsShould]).
+myRule(decrease_Als, [Lama]).
+myRule(SitMildAls_Als, [SitModAls_Als, decrease_Als]).
+myRule(LabaLama, [http://anonymous.org/data/RecCOPD-LabaLamaDecModAlsShould]).
+myRule(decrease_Als, [LabaLama]).
+myRule(SitMildAls_Als, [SitModAls_Als, decrease_Als]).
+myRule(c_http://anonymous.org/data/RecCOPD-LabaDecModAlsShould, [http://anonymous.org/data/RecCOPD-LamaDecModAlsShould]).
+myRule(c_http://anonymous.org/data/RecCOPD-LabaDecModAlsShould, [http://anonymous.org/data/RecCOPD-LabaLamaDecModAlsShould]).
+myRule(c_http://anonymous.org/data/RecCOPD-LamaDecModAlsShould, [http://anonymous.org/data/RecCOPD-LabaDecModAlsShould]).
+myRule(c_http://anonymous.org/data/RecCOPD-LamaDecModAlsShould, [http://anonymous.org/data/RecCOPD-LabaLamaDecModAlsShould]).
+myRule(c_http://anonymous.org/data/RecCOPD-LabaLamaDecModAlsShould, [http://anonymous.org/data/RecCOPD-LabaDecModAlsShould]).
+myRule(c_http://anonymous.org/data/RecCOPD-LabaLamaDecModAlsShould, [http://anonymous.org/data/RecCOPD-LamaDecModAlsShould]).
+myRule(c_http://anonymous.org/data/RecCOPD-LabaDecModAlsShould, [http://anonymous.org/data/RecCOPD-LamaDecModAlsShould]).
+myRule(c_http://anonymous.org/data/RecCOPD-LabaDecModAlsShould, [http://anonymous.org/data/RecCOPD-LabaLamaDecModAlsShould]).
+myRule(c_http://anonymous.org/data/RecCOPD-LamaDecModAlsShould, [http://anonymous.org/data/RecCOPD-LabaDecModAlsShould]).
+myRule(c_http://anonymous.org/data/RecCOPD-LamaDecModAlsShould, [http://anonymous.org/data/RecCOPD-LabaLamaDecModAlsShould]).
+myRule(c_http://anonymous.org/data/RecCOPD-LabaLamaDecModAlsShould, [http://anonymous.org/data/RecCOPD-LabaDecModAlsShould]).
+myRule(c_http://anonymous.org/data/RecCOPD-LabaLamaDecModAlsShould, [http://anonymous.org/data/RecCOPD-LamaDecModAlsShould]).
+myRule(c_http://anonymous.org/data/RecCOPD-LabaDecModAlsShould, [http://anonymous.org/data/RecCOPD-BetaAgonistIncLowRiskCdrShouldnot]).
+myRule(c_http://anonymous.org/data/RecCOPD-BetaAgonistIncLowRiskCdrShouldnot, [http://anonymous.org/data/RecCOPD-LabaDecModAlsShould]).
+myRule(c_http://anonymous.org/data/RecCOPD-LabaLamaDecModAlsShould, [http://anonymous.org/data/RecCOPD-BetaAgonistIncLowRiskCdrShouldnot]).
+myRule(c_http://anonymous.org/data/RecCOPD-BetaAgonistIncLowRiskCdrShouldnot, [http://anonymous.org/data/RecCOPD-LabaLamaDecModAlsShould]).
