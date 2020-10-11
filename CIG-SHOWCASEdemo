@@ -30,5 +30,5 @@ myRule(c_http://anonymous.org/data/RecSHOWCASEdemo-LamaDecreaseCOPD.stage2Should
 myRule(c_http://anonymous.org/data/RecSHOWCASEdemo-LamaDecreaseCOPD.stage2Should, [http://anonymous.org/data/RecSHOWCASEdemo-LabaLamaDecreaseCOPD.stage2Should]).
 myRule(c_http://anonymous.org/data/RecSHOWCASEdemo-LabaLamaDecreaseCOPD.stage2Should, [http://anonymous.org/data/RecSHOWCASEdemo-LabaDecreaseCOPD.stage2Should]).
 myRule(c_http://anonymous.org/data/RecSHOWCASEdemo-LabaLamaDecreaseCOPD.stage2Should, [http://anonymous.org/data/RecSHOWCASEdemo-LamaDecreaseCOPD.stage2Should]).
-myPrefLT(http://anonymous.org/data/RecSHOWCASEdemo-LabaLamaDecreaseCOPD.stage2Should, http://anonymous.org/data/RecSHOWCASEdemo-LabaDecreaseCOPD.stage2Should).
-myPrefLT(http://anonymous.org/data/RecSHOWCASEdemo-LabaLamaDecreaseCOPD.stage2Should, http://anonymous.org/data/RecSHOWCASEdemo-LamaDecreaseCOPD.stage2Should).
+myPrefLT(http://anonymous.org/data/RecSHOWCASEdemo-LabaDecreaseCOPD.stage2Should, http://anonymous.org/data/RecSHOWCASEdemo-LabaLamaDecreaseCOPD.stage2Should).
+myPrefLT(http://anonymous.org/data/RecSHOWCASEdemo-LamaDecreaseCOPD.stage2Should, http://anonymous.org/data/RecSHOWCASEdemo-LabaLamaDecreaseCOPD.stage2Should).

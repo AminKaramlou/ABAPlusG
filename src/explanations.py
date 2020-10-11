@@ -31,8 +31,8 @@ def get_explanations_json(framework, extensions, dss):
                     	'contribution': belief['contribution'], 
                     	'contributionON': transition['property']['code'],
                     	'contributionTO': transition['effect'], 
-                    	'from': pre_situation['value']['representation'], 
-                    	'to': post_situation['value']['representation']
+                    	'from': pre_situation['value']['code'], 
+                    	'to': post_situation['value']['code']
                     }
                     reason = f"{belief['contribution']} contribution _ON_ {transition['property']['display']} _TO_ {transition['effect']} _FROM_ {pre_situation['value']['display']} _TO_ {post_situation['value']['display']}"
                     causation_beliefs.append(causation_belief)
@@ -116,7 +116,7 @@ def get_explanations_json(framework, extensions, dss):
                 if alternatives:
                     alt_texts = []
                     for alt in alternatives:
-                        alt_text = f"{alt['suggestion']} {alt['aboutExecutionOf']}"
+                        alt_text = f"{alt['suggestion']} {alt['careActionType']['display']}"
                         alt_texts.append(alt_text)
                     text_alternatives = f"Considered alternatives: {'; '.join(str(alt_text) for alt_text in alt_texts)}"
                 else:
@@ -124,7 +124,7 @@ def get_explanations_json(framework, extensions, dss):
                 if contradictions:
                     contr_texts = []
                     for contr in contradictions:
-                        contr_text = f"{contr['suggestion']} {contr['aboutExecutionOf']}"
+                        contr_text = f"{contr['suggestion']} {contr['careActionType']['display']}"
                         contr_texts.append(contr_text)
                     text_contradictions = f"Considered contradictory recommendations: {'; '.join(str(contr_text) for contr_text in contr_texts)}"
                 else:
@@ -132,7 +132,7 @@ def get_explanations_json(framework, extensions, dss):
                 if repetitions:
                     repet_texts = []
                     for repet in repetitions:
-                        repet_text = f"{repet['suggestion']} {repet['aboutExecutionOf']}"
+                        repet_text = f"{repet['suggestion']} {repet['careActionType']['display']}"
                         repet_texts.append(repet_text)
                     text_repetitions = f"Considered repetitive recommendations: {'; '.join(str(repet_text) for repet_text in repet_texts)}"
                 else:
@@ -140,7 +140,7 @@ def get_explanations_json(framework, extensions, dss):
                 if repairables:
                     repair_texts = []
                     for repair in repairables:
-                        repair_text = f"{repair['suggestion']} {repair['aboutExecutionOf']}"
+                        repair_text = f"{repair['suggestion']} {repair['careActionType']['display']}"
                         repair_texts.append(repair_text)
                     text_repairables = f"Considered recommendations in repairable relation: {'; '.join(str(repair_text) for repair_text in repair_texts)}"
                 else:

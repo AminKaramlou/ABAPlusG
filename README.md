@@ -35,6 +35,7 @@ To send POST requests to the [deployed ABA+G endpoint](https://aba-plus-g.heroku
 ### Stand-alone
 
 Run `python src/app.py` from the main directory of the repository to run the flask server with ABA+G. 
+(Make sure the repository dir `Repo` is the system's Python path, e.g. `export PYTHONPATH=Repo:$PYTHONPATH`.)
 
 To send POST requests to the [local ABA+G endpoint](http://127.0.0.1:5000/generate_explanations), from `/requests` run `python post.py` (modify `URL` as required). 
 `INPUT_FILE` .json needs to be in `/requests`, the output .json will be appended with `_arg` and placed in `/requests`.

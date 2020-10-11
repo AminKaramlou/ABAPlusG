@@ -7,7 +7,7 @@ from requests.exceptions import HTTPError
 
 # URL = "https://aba-plus-g.herokuapp.com/generate_explanations"
 URL = "http://127.0.0.1:5000/generate_explanations"
-INPUT_FILE = "example.json"
+INPUT_FILE = "usecase3.json"
 
 with open(INPUT_FILE, "rb") as DSS_input_file:
 	DSS_input = json.load(DSS_input_file)
