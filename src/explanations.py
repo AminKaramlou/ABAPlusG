@@ -20,8 +20,8 @@ def get_explanations_json(framework, extensions, dss):
                     post_situation = next(s for s in transition['situationTypes'] if s['type'] == 'hasExpectedSituation')
                     causation_belief = {
                         'id': belief['id'],
-                        'contribution': belief['contribution'], 
-                        'transition': transition                     
+                        'contribution': belief['contribution'],
+                        'transition': transition
                         # 'property': transition['property']['code'],
                         # 'effect': transition['id'], 
                         # 'currentSituation': pre_situation['id'],
@@ -34,7 +34,7 @@ def get_explanations_json(framework, extensions, dss):
                     	'from': pre_situation['value']['code'], 
                     	'to': post_situation['value']['code']
                     }
-                    reason = f"{belief['contribution']} contribution _ON_ {transition['property']['display']} _TO_ {transition['effect']} _FROM_ {pre_situation['value']['display']} _TO_ {post_situation['value']['display']}"
+                    reason = f"{rec['careActionType']['display']} _HAS_ {belief['contribution']} contribution _ON_ {transition['property']['display']} _TO_ {transition['effect']} _FROM_ {pre_situation['value']['display']} _TO_ {post_situation['value']['display']}"
                     causation_beliefs.append(causation_belief)
                     reasons_components.append(reason_components)
                     reasons.append(reason)
@@ -63,10 +63,8 @@ def get_explanations_json(framework, extensions, dss):
                 repairables = []
                 for other_rec in interacting_recommendations:
                     interaction_types = []
-                    preference = False
                     repair = False
                     # repairable_comment = None
-                    # preference_comment = None
                     for inter in guideline_group_data['interactions']:
                         if all(r_id in [r['recId'] for r in inter['interactionNorms']] for r_id in [rec_id, other_rec['id']]): # if both :rec_id: and :other_rec['id']: appear among the IDs in :inter['interactionNorms']:
                             if inter['type'] == 'repairable':
@@ -90,24 +88,17 @@ def get_explanations_json(framework, extensions, dss):
                         repairables.append(other_rec)
 
                     if (other_rec['id'], rec_id) in framework.strict_preferences:
-                        preference = True
-                        preferred = False # Interacting recommendation is not preferred over the main recommendation
-                        # preference_comment = '{} is preferred'.format(rec_id)
+                        preferred = -1 # Interacting recommendation is not preferred over the main recommendation
                     elif (rec_id, other_rec['id']) in framework.strict_preferences:
-                        preference = True
-                        preferred = True # Interacting recommendation is preferred over the main recommendation
-                        # preference_comment = '{} not acceptable even though preferred'.format(other_rec['id'])
+                        preferred = 1 # Interacting recommendation is preferred over the main recommendation
+                    else:
+                        preferred = 0 # The two recommendations are eqully preferred (in this case it is the same as no preference being expressed)
 
                     interacting_rec_information = {
                         'interactingRecommendationId': other_rec['id'],
                         'interactionTypes': interaction_types
-                        # 'interactingRecommendationActionId': other_rec['careActionTypeId'], 
-                        # 'interactingRecommendationSuggestion': other_rec['suggestion'],
-                        # 'commentPreference': preference_comment,
-                        # 'commentRepairable': repairable_comment
                     }
-                    if preference:
-                        interacting_rec_information.update({'preferred': preferred})
+                    interacting_rec_information.update({'preferred': preferred})
                     if repair:
                         interacting_rec_information.update({'repairable': repairable})
                     
