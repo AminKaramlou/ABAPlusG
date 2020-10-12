@@ -4,11 +4,11 @@
             "extension": [
                 {
                     "aboutRecommendation": {
-                        "id": "http://anonymous.org/data/RecCOPD-LabaDecModAlsShould",
-                        "text": "Clinician should recommend administering LABA bronchodilator",
+                        "id": "http://anonymous.org/data/RecCOPD-LamaDecModAlsShould",
+                        "text": "Clinician should recommend administering LAMA bronchodilator",
                         "causationBeliefs": [
                             {
-                                "id": "http://anonymous.org/data/CBLabaDecModAls",
+                                "id": "http://anonymous.org/data/CBLamaDecModAls",
                                 "contribution": "positive",
                                 "transition": {
                                     "id": "http://anonymous.org/data/TrDecModAls",
@@ -47,22 +47,17 @@
                                 "to": "SitMildAls"
                             }
                         ],
-                        "reasons": "positive contribution _ON_ airflow limitation severity _TO_ decrease _FROM_ a moderate airflow limitation severity _TO_ a mild airflow limitation severity"
+                        "reasons": "administration of LAMA bronchodilator _HAS_ positive contribution _ON_ airflow limitation severity _TO_ decrease _FROM_ a moderate airflow limitation severity _TO_ a mild airflow limitation severity"
                     },
                     "interactionsInformation": {
                         "interactingRecommendations": [
                             {
-                                "interactingRecommendationId": "http://anonymous.org/data/RecCOPD-BetaAgonistIncLowRiskCdrShouldnot",
-                                "interactionTypes": [
-                                    "contradiction"
-                                ]
-                            },
-                            {
-                                "interactingRecommendationId": "http://anonymous.org/data/RecCOPD-LamaDecModAlsShould",
+                                "interactingRecommendationId": "http://anonymous.org/data/RecCOPD-LabaDecModAlsShould",
                                 "interactionTypes": [
                                     "alternative",
                                     "repetition"
-                                ]
+                                ],
+                                "preferred": 0
                             },
                             {
                                 "interactingRecommendationId": "http://anonymous.org/data/RecCOPD-LabaLamaDecModAlsShould",
@@ -70,28 +65,22 @@
                                     "alternative",
                                     "repetition"
                                 ],
-                                "preferred": false
+                                "preferred": -1
                             }
                         ],
-                        "text": "Considered alternatives: recommend administration of LAMA bronchodilator; recommend administration of LABA+LAMA bronchodilator. Considered contradictory recommendations: nonrecommend administration of Beta Agonist bronchodilator. Considered repetitive recommendations: recommend administration of LAMA bronchodilator; recommend administration of LABA+LAMA bronchodilator. No recommendations in repairable relation considered.",
+                        "text": "Considered alternatives: recommend administration of LABA bronchodilator; recommend administration of LABA+LAMA bronchodilator. No contradicting recommendations considered. Considered repetitive recommendations: recommend administration of LABA bronchodilator; recommend administration of LABA+LAMA bronchodilator. No recommendations in repairable relation considered.",
                         "alternatives": [
-                            "http://anonymous.org/data/RecCOPD-LamaDecModAlsShould",
+                            "http://anonymous.org/data/RecCOPD-LabaDecModAlsShould",
                             "http://anonymous.org/data/RecCOPD-LabaLamaDecModAlsShould"
                         ],
-                        "contradictions": [
-                            "http://anonymous.org/data/RecCOPD-BetaAgonistIncLowRiskCdrShouldnot"
-                        ],
+                        "contradictions": [],
                         "repetitions": [
-                            "http://anonymous.org/data/RecCOPD-LamaDecModAlsShould",
+                            "http://anonymous.org/data/RecCOPD-LabaDecModAlsShould",
                             "http://anonymous.org/data/RecCOPD-LabaLamaDecModAlsShould"
                         ],
                         "repairables": []
                     }
-                }
-            ]
-        },
-        {
-            "extension": [
+                },
                 {
                     "aboutRecommendation": {
                         "id": "http://anonymous.org/data/RecCOPD-BetaAgonistIncLowRiskCdrShouldnot",
@@ -137,7 +126,7 @@
                                 "to": "SitHighRiskCrd"
                             }
                         ],
-                        "reasons": "negative contribution _ON_ risk of having cardiac rhythm disturbances _TO_ increase _FROM_ a low risk of having cardiac rhythm disturbances _TO_ a high risk of having cardiac rhythm disturbances"
+                        "reasons": "administration of Beta Agonist bronchodilator _HAS_ negative contribution _ON_ risk of having cardiac rhythm disturbances _TO_ increase _FROM_ a low risk of having cardiac rhythm disturbances _TO_ a high risk of having cardiac rhythm disturbances"
                     },
                     "interactionsInformation": {
                         "interactingRecommendations": [
@@ -145,13 +134,15 @@
                                 "interactingRecommendationId": "http://anonymous.org/data/RecCOPD-LabaDecModAlsShould",
                                 "interactionTypes": [
                                     "contradiction"
-                                ]
+                                ],
+                                "preferred": 0
                             },
                             {
                                 "interactingRecommendationId": "http://anonymous.org/data/RecCOPD-LabaLamaDecModAlsShould",
                                 "interactionTypes": [
                                     "contradiction"
-                                ]
+                                ],
+                                "preferred": 0
                             }
                         ],
                         "text": "No applicable alternatives considered. Considered contradictory recommendations: recommend administration of LABA bronchodilator; recommend administration of LABA+LAMA bronchodilator. No repetitive recommendations considered. No recommendations in repairable relation considered.",
@@ -163,14 +154,18 @@
                         "repetitions": [],
                         "repairables": []
                     }
-                },
+                }
+            ]
+        },
+        {
+            "extension": [
                 {
                     "aboutRecommendation": {
-                        "id": "http://anonymous.org/data/RecCOPD-LamaDecModAlsShould",
-                        "text": "Clinician should recommend administering LAMA bronchodilator",
+                        "id": "http://anonymous.org/data/RecCOPD-LabaDecModAlsShould",
+                        "text": "Clinician should recommend administering LABA bronchodilator",
                         "causationBeliefs": [
                             {
-                                "id": "http://anonymous.org/data/CBLamaDecModAls",
+                                "id": "http://anonymous.org/data/CBLabaDecModAls",
                                 "contribution": "positive",
                                 "transition": {
                                     "id": "http://anonymous.org/data/TrDecModAls",
@@ -209,16 +204,24 @@
                                 "to": "SitMildAls"
                             }
                         ],
-                        "reasons": "positive contribution _ON_ airflow limitation severity _TO_ decrease _FROM_ a moderate airflow limitation severity _TO_ a mild airflow limitation severity"
+                        "reasons": "administration of LABA bronchodilator _HAS_ positive contribution _ON_ airflow limitation severity _TO_ decrease _FROM_ a moderate airflow limitation severity _TO_ a mild airflow limitation severity"
                     },
                     "interactionsInformation": {
                         "interactingRecommendations": [
                             {
-                                "interactingRecommendationId": "http://anonymous.org/data/RecCOPD-LabaDecModAlsShould",
+                                "interactingRecommendationId": "http://anonymous.org/data/RecCOPD-BetaAgonistIncLowRiskCdrShouldnot",
+                                "interactionTypes": [
+                                    "contradiction"
+                                ],
+                                "preferred": 0
+                            },
+                            {
+                                "interactingRecommendationId": "http://anonymous.org/data/RecCOPD-LamaDecModAlsShould",
                                 "interactionTypes": [
                                     "alternative",
                                     "repetition"
-                                ]
+                                ],
+                                "preferred": 0
                             },
                             {
                                 "interactingRecommendationId": "http://anonymous.org/data/RecCOPD-LabaLamaDecModAlsShould",
@@ -226,17 +229,19 @@
                                     "alternative",
                                     "repetition"
                                 ],
-                                "preferred": false
+                                "preferred": -1
                             }
                         ],
-                        "text": "Considered alternatives: recommend administration of LABA bronchodilator; recommend administration of LABA+LAMA bronchodilator. No contradicting recommendations considered. Considered repetitive recommendations: recommend administration of LABA bronchodilator; recommend administration of LABA+LAMA bronchodilator. No recommendations in repairable relation considered.",
+                        "text": "Considered alternatives: recommend administration of LAMA bronchodilator; recommend administration of LABA+LAMA bronchodilator. Considered contradictory recommendations: nonrecommend administration of Beta Agonist bronchodilator. Considered repetitive recommendations: recommend administration of LAMA bronchodilator; recommend administration of LABA+LAMA bronchodilator. No recommendations in repairable relation considered.",
                         "alternatives": [
-                            "http://anonymous.org/data/RecCOPD-LabaDecModAlsShould",
+                            "http://anonymous.org/data/RecCOPD-LamaDecModAlsShould",
                             "http://anonymous.org/data/RecCOPD-LabaLamaDecModAlsShould"
                         ],
-                        "contradictions": [],
+                        "contradictions": [
+                            "http://anonymous.org/data/RecCOPD-BetaAgonistIncLowRiskCdrShouldnot"
+                        ],
                         "repetitions": [
-                            "http://anonymous.org/data/RecCOPD-LabaDecModAlsShould",
+                            "http://anonymous.org/data/RecCOPD-LamaDecModAlsShould",
                             "http://anonymous.org/data/RecCOPD-LabaLamaDecModAlsShould"
                         ],
                         "repairables": []
