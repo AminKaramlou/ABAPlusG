@@ -1,12 +1,12 @@
 from setuptools import setup, find_packages
 install_requires = [
-    'click>=6.7',
-    'pandas>=0.23.0',
-    'flask>=1.0.0',
-    'flask-Cors>=3.0.7',
-    'flask-SocketIO>=3.3.2',
-    'eventlet>=0.24.1',
-    'gunicorn>=19.9.0'
+    'click>=8.0.1',
+    'pandas>=1.3.0',
+    'flask>=2.0.1',
+    'flask-Cors>=3.0.10',
+    'flask-SocketIO>=5.1.0',
+    'eventlet>=0.31.1',
+    'gunicorn>=20.1.0'
 ]
 dev_requires = [
     'coverage>=4.4.1',
@@ -36,7 +36,5 @@ setup(
     },
     entry_points = '''
     [console_scripts]
-    bipolar-ABA-solver-generate-extensions=src.cli:generate_extensions
-    bipolar-ABA-solver-generate-explanations=src.cli:generate_explanations
     ''',
 )
