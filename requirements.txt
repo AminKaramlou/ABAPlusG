@@ -50,7 +50,7 @@ six==1.11.0
     #   eventlet
     #   flask-cors
     #   python-dateutil
-werkzeug==2.0.1
+werkzeug==2.2.3
     # via flask
 
 # The following packages are considered to be unsafe in a requirements file:
